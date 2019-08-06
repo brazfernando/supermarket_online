@@ -1,15 +1,19 @@
 package com.supermarket.online.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-@Entity(name = "TB_SUPER_MERCADO")
-public class SuperMercado implements Serializable {
-	
+
+@Entity(name = "TB_MARCA")
+public class Marca implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -18,11 +22,11 @@ public class SuperMercado implements Serializable {
 	
 	private String nome;
 	
-	private String cnpj;
+	@OneToMany(mappedBy = "marca")
+	private List<Produto> produtos = new ArrayList<Produto>();
 	
-	private String email;
 	
-	public SuperMercado() {
+	public Marca() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -42,24 +46,13 @@ public class SuperMercado implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getCnpj() {
-		return cnpj;
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	
-	
 	
 
 }
