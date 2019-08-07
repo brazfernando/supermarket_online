@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity(name = "TB_CATEGORIA")
@@ -23,6 +25,10 @@ public class Categoria implements Serializable {
 	
 	@OneToMany(mappedBy = "categoria")
 	private List<Produto> produtos = new ArrayList<Produto>();
+	
+	@ManyToOne
+	@JoinColumn(name = "unidade_medida_id")
+	private UnidadeMedida unidadeMedida;
 	
 	public Categoria() {
 		// TODO Auto-generated constructor stub
@@ -51,6 +57,16 @@ public class Categoria implements Serializable {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
+
+	public UnidadeMedida getUnidadeMedida() {
+		return unidadeMedida;
+	}
+
+	public void setUnidadeMedida(UnidadeMedida unidadeMedida) {
+		this.unidadeMedida = unidadeMedida;
+	}
+	
+	
 
 	
 

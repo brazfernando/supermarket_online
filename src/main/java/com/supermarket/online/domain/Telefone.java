@@ -1,9 +1,6 @@
 package com.supermarket.online.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-@Entity(name = "TB_COMPRA")
-public class Compra implements Serializable {
+@Entity(name = "TB_TELEFONE")
+public class Telefone implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -22,14 +18,15 @@ public class Compra implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private Date dataCompra;
-	
-	@OneToMany(mappedBy = "compra")
-	private List<Item> itens = new ArrayList<Item>();
+	private String numero;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "super_mercado_id")
+	private SuperMercado superMercado;
 
 	public Integer getId() {
 		return id;
@@ -39,20 +36,12 @@ public class Compra implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDataCompra() {
-		return dataCompra;
+	public String getNumero() {
+		return numero;
 	}
 
-	public void setDataCompra(Date dataCompra) {
-		this.dataCompra = dataCompra;
-	}
-
-	public List<Item> getItens() {
-		return itens;
-	}
-
-	public void setItens(List<Item> itens) {
-		this.itens = itens;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	public Cliente getCliente() {
@@ -62,7 +51,15 @@ public class Compra implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
+	public SuperMercado getSuperMercado() {
+		return superMercado;
+	}
+
+	public void setSuperMercado(SuperMercado superMercado) {
+		this.superMercado = superMercado;
+	}
+
 	
 	
 }

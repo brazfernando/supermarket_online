@@ -10,23 +10,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity(name = "TB_TIPO_PRODUTO")
-public class TipoProduto implements Serializable {
+@Entity(name = "TB_UNIDADE_MEDIDA")
+public class UnidadeMedida implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private Boolean perecivel;
+	private String unidade;
 	
-	@OneToMany(mappedBy = "tipoProduto")
-	private List<Produto> produtos = new ArrayList<Produto>();
-	
-	public TipoProduto() {
-		// TODO Auto-generated constructor stub
-	}
+	@OneToMany(mappedBy = "unidadeMedida")
+	private List<Categoria> categorias = new ArrayList<Categoria>();
 
 	public Integer getId() {
 		return id;
@@ -36,21 +33,22 @@ public class TipoProduto implements Serializable {
 		this.id = id;
 	}
 
-	public Boolean getPerecivel() {
-		return perecivel;
+	public String getUnidade() {
+		return unidade;
 	}
 
-	public void setPerecivel(Boolean perecivel) {
-		this.perecivel = perecivel;
+	public void setUnidade(String unidade) {
+		this.unidade = unidade;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	public List<Categoria> getCategorias() {
+		return categorias;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
-
+	
+	
 
 }

@@ -38,10 +38,6 @@ public class Produto implements Serializable {
 	private Marca marca;
 	
 	@ManyToOne
-	@JoinColumn(name = "tipo_produto_id")
-	private TipoProduto tipoProduto;
-	
-	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
@@ -87,14 +83,6 @@ public class Produto implements Serializable {
 
 	public void setMarca(Marca marca) {
 		this.marca = marca;
-	}
-
-	public TipoProduto getTipoProduto() {
-		return tipoProduto;
-	}
-
-	public void setTipoProduto(TipoProduto tipoProduto) {
-		this.tipoProduto = tipoProduto;
 	}
 
 	public Categoria getCategoria() {
